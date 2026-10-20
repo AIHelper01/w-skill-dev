@@ -1,11 +1,11 @@
 ---
-name: weather
+name: w-weather
 description: Get current weather and forecasts (no API key required).
 homepage: https://wttr.in/:help
 metadata: {"clawdbot":{"emoji":"🌤️","requires":{"bins":["curl"]}}}
 ---
 
-# Weather
+# w-weather
 
 Two free services, no API keys needed.
 
