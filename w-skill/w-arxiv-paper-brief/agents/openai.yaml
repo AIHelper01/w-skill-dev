@@ -1,0 +1,4 @@
+interface:
+  display_name: "ArXiv Paper Brief"
+  short_description: "Create concise Chinese arXiv paper briefs"
+  default_prompt: "Use $w-arxiv-paper-brief to create a concise, source-grounded Chinese brief for this arXiv paper."
