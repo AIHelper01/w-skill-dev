@@ -17,13 +17,14 @@ w-skill-dev/
 - `SKILL.md` 是必需入口：YAML frontmatter（`name` / `description` / 可选
   `homepage`、`metadata`）+ 正文使用说明。
 - 有脚本、模板等附属资源时，放在同一 skill 目录内（如 `scripts/`、`assets/`）。
-- 第三方 skill 保留原始 `_meta.json` 等文件，并在本 README 登记来源。
+- 第三方 skill 保留原始 `_meta.json` 等文件，并在下表登记来源与版本；
+  官方安装方式：`npx clawhub@latest install weather`。
 
 ## 已收录
 
 | Skill | 位置 | 来源 | 说明 |
 |---|---|---|---|
-| weather | `third-party/weather/` | steipete（ClawHub `weather` v1.0.0） | 免费天气查询：wttr.in 为主、Open-Meteo 兜底，无需 API key，仅依赖 `curl` |
+| weather | `third-party/weather/` | ClawHub [`@steipete/weather`](https://docs.clawhub.ai/steipete/skills/weather) v1.0.0（Peter Steinberger） | 免费天气查询：wttr.in 为主、Open-Meteo 兜底，无需 API key，仅依赖 `curl` |
 
 ## 安装到 Codex
 
