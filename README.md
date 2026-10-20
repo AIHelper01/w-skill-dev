@@ -25,7 +25,7 @@ w-skill-dev/
 | Skill | 说明 |
 |---|---|
 | [w-weather](w-skill/w-weather/SKILL.md) | 免费天气查询：wttr.in 为主、Open-Meteo 兜底，无需 API key，仅依赖 `curl`。在 ClawHub [`@steipete/weather`](https://docs.clawhub.ai/steipete/skills/weather) v1.0.0 基础上整理，已去除上游分发元数据 |
-| [w-slide-lecturer](w-skill/w-slide-lecturer/SKILL.md) | PPT/PDF 逐模块英文授课讲稿：原文提取、英文讲稿、中文指图提示与截图打包，按需产出 Word。含 `scripts/`（extract/build/validate）与 `references/` |
+| [w-slide-lecturer](w-skill/w-slide-lecturer/SKILL.md) | 忠实原 PPT 结构与内容的英文授课讲稿：逐页讲授、中文指图提示、自然串联与贯穿案例，支持标准/扩展输出格式。含 `references/`（style-guide、output-formats）与 `examples/` |
 | [w-arxiv-paper-brief](w-skill/w-arxiv-paper-brief/SKILL.md) | 把 arXiv 论文写成忠于原文的中文精简解读，含核心思路、实测收益、首版日期与少量原文插图 |
 | [w-interactive-demo](w-skill/w-interactive-demo/SKILL.md) | 从网页链接提取指定交互演示并离线打包；或按浅色教学风格新建可调参数、图表与指标联动的演示工具 |
 | [w-mcp-server-builder](w-skill/w-mcp-server-builder/SKILL.md) | 构建/改进/审查 Python FastMCP（MCP）服务，重点 Streamable HTTP、Host/Origin 防护、优雅退出与文档 |
