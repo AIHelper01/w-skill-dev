@@ -22,14 +22,22 @@ w-skill-dev/
 
 ## 自研 skill（w-skill/）
 
-| Skill | skill name | 说明 |
-|---|---|---|
-| [w-weather](w-skill/w-weather/SKILL.md) | `w-weather` | 免费天气查询：wttr.in 为主、Open-Meteo 兜底，无需 API key，仅依赖 `curl`。在 ClawHub [`@steipete/weather`](https://docs.clawhub.ai/steipete/skills/weather) v1.0.0 基础上整理，已去除上游分发元数据 |
-| [w-slide-lecturer](w-skill/w-slide-lecturer/SKILL.md) | `slide-teaching-guide` | PPT/PDF 逐模块英文授课讲稿：原文提取、英文讲稿、中文指图提示与截图打包，可按需产出 Word。含 `scripts/`（extract/build/validate）与 `references/`。目录名为仓库名 `w-slide-lecturer`，skill name 沿用历史名 |
-| [w-arxiv-paper-brief](w-skill/w-arxiv-paper-brief/SKILL.md) | `w-arxiv-paper-brief` | 把 arXiv 论文写成忠于原文的中文精简解读，含核心思路、实测收益、首版日期与少量原文插图 |
+| Skill | 说明 |
+|---|---|
+| [w-weather](w-skill/w-weather/SKILL.md) | 免费天气查询：wttr.in 为主、Open-Meteo 兜底，无需 API key，仅依赖 `curl`。在 ClawHub [`@steipete/weather`](https://docs.clawhub.ai/steipete/skills/weather) v1.0.0 基础上整理，已去除上游分发元数据 |
+| [w-slide-lecturer](w-skill/w-slide-lecturer/SKILL.md) | PPT/PDF 逐模块英文授课讲稿：原文提取、英文讲稿、中文指图提示与截图打包，按需产出 Word。含 `scripts/`（extract/build/validate）与 `references/` |
+| [w-arxiv-paper-brief](w-skill/w-arxiv-paper-brief/SKILL.md) | 把 arXiv 论文写成忠于原文的中文精简解读，含核心思路、实测收益、首版日期与少量原文插图 |
+| [w-interactive-demo](w-skill/w-interactive-demo/SKILL.md) | 从网页链接提取指定交互演示并离线打包；或按浅色教学风格新建可调参数、图表与指标联动的演示工具 |
+| [w-mcp-server-builder](w-skill/w-mcp-server-builder/SKILL.md) | 构建/改进/审查 Python FastMCP（MCP）服务，重点 Streamable HTTP、Host/Origin 防护、优雅退出与文档 |
+| [w-md2nb](w-skill/w-md2nb/SKILL.md) | 把 Markdown 教程目录批量转成 Jupyter Notebook，保留可读单元格边界与本地图片渲染，附转换脚本 |
 
-三个 skill 原先各为独立仓库（`AIHelper01/w-slide-lecturer`、`AIHelper01/w-arxiv-paper-brief`），
-已迁入本仓库统一管理；`agents/openai.yaml` 为 Codex/Agent 界面元数据，一并保留。
+所有 skill 的 frontmatter `name` 与目录名一致。
+`agents/openai.yaml` 是 Codex/Agent 界面元数据（展示名与默认提示词），一并维护。
+
+> 沿革：`w-slide-lecturer`、`w-arxiv-paper-brief` 原为独立仓库（已删除，内容全量迁入本仓库）；
+> `w-interactive-demo`、`w-mcp-server-builder`、`w-md2nb` 原先只存在于本机
+> `~/.codex/skills/`，现以本仓库为唯一来源；`w-slide-lecturer` 的 skill name
+> 原为 `slide-teaching-guide`，已统一为 `w-slide-lecturer`。
 
 ## 第三方 skill（third-party/）
 
@@ -42,9 +50,12 @@ w-skill-dev/
 把 skill 目录复制到 `$CODEX_HOME/skills/`（默认 `~/.codex/skills/`）即可被识别：
 
 ```bash
-cp -R w-skill/w-weather            ~/.codex/skills/w-weather
-cp -R w-skill/w-slide-lecturer     ~/.codex/skills/w-slide-lecturer
-cp -R w-skill/w-arxiv-paper-brief  ~/.codex/skills/w-arxiv-paper-brief
+for s in w-weather w-slide-lecturer w-arxiv-paper-brief \
+         w-interactive-demo w-mcp-server-builder w-md2nb; do
+  cp -R "w-skill/$s" "$HOME/.codex/skills/$s"
+done
 ```
+
+更新单个 skill 同理；`~/.codex/skills/` 是安装副本，改动请先落在本仓库再复制过去。
 
 自研 skill 建议直接在 `w-skill/<name>/` 开发调试，验证后再复制或安装。

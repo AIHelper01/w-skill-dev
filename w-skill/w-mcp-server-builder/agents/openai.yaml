@@ -1,0 +1,4 @@
+interface:
+  display_name: "MCP Server Builder"
+  short_description: "Build and harden Streamable HTTP MCP servers"
+  default_prompt: "Use $w-mcp-server-builder to create or improve a Streamable HTTP MCP server with remote access, shutdown handling, validation, and README guidance."

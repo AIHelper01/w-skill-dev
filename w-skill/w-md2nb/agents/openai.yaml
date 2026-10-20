@@ -1,0 +1,4 @@
+interface:
+  display_name: "W Md2nb"
+  short_description: "Convert Markdown tutorials to notebooks"
+  default_prompt: "Use $w-md2nb to convert Markdown tutorials into Jupyter notebooks with assets."

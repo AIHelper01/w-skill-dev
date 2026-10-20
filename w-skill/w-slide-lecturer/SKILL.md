@@ -1,9 +1,9 @@
 ---
-name: slide-teaching-guide
+name: w-slide-lecturer
 description: "将 PPT/PPTX、幻灯片截图或已有英文讲稿整理成可直接授课的英文教学讲稿，并按需输出 Word。Use for slide-by-slide English teaching scripts, simple natural English polishing, original slide screenshots, bold source wording, visual explanations, natural transitions, and moderate examples. Preserve slide structure and order."
 ---
 
-# Slide Teaching Guide
+# w-slide-lecturer
 
 ## Default contract
 
