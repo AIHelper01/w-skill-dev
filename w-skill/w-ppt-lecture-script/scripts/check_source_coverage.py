@@ -8,20 +8,17 @@ import argparse
 import json
 import re
 from pathlib import Path
-from pptx import Presentation
-from pptx.enum.shapes import MSO_SHAPE_TYPE
-from docx import Document
 
 
 def norm(s):
     return ' '.join(re.sub(r'\s+', ' ', s).split()).casefold().strip()
 
 
-def source_fragments(shape):
+def source_fragments(shape, group_shape_type):
     out = []
-    if shape.shape_type == MSO_SHAPE_TYPE.GROUP:
+    if shape.shape_type == group_shape_type:
         for sub in shape.shapes:
-            out.extend(source_fragments(sub))
+            out.extend(source_fragments(sub, group_shape_type))
     if shape.has_text_frame:
         out.extend(p.text.strip() for p in shape.text_frame.paragraphs if p.text.strip())
     if shape.has_table:
@@ -37,6 +34,15 @@ def main():
     ap.add_argument('--docx',required=True)
     ap.add_argument('--json')
     args=ap.parse_args()
+    try:
+        from pptx import Presentation
+        from pptx.enum.shapes import MSO_SHAPE_TYPE
+        from docx import Document
+    except ModuleNotFoundError as exc:
+        ap.error(
+            f"missing Python package '{exc.name}'. Run this script in the document "
+            "artifact environment with python-pptx and python-docx available."
+        )
     ppt=Presentation(args.pptx)
     doc=Document(args.docx)
     paras=[(norm(p.text), any(bool(r.bold) and r.text.strip() for r in p.runs)) for p in doc.paragraphs]
@@ -46,7 +52,7 @@ def main():
     for i,slide in enumerate(ppt.slides,1):
         items=[]
         for shape in slide.shapes:
-            items.extend(source_fragments(shape))
+            items.extend(source_fragments(shape, MSO_SHAPE_TYPE.GROUP))
         checks=[]
         for s in items:
             n=norm(s)

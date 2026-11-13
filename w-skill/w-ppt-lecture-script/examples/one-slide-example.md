@@ -1,35 +1,52 @@
-# Illustrative single-slide script (sample only, not a claim about user materials)
+# Integrated single-slide example
 
-Original sample PPT:
-- Title: Agent Workflow
-- Left: `Receive the task → Choose a tool → Run the action → Check the result`
-- Right: `Tools connect the agent to external systems.`
-- Bottom: `Key Takeaway: An agent can take actions and learn from feedback.`
+Sample PPT content:
 
-Expected Word structure:
+- Title: `Agent Workflow`
+- Left flow: `Receive the task → Choose a tool → Run the action → Check the result`
+- Decision after `Check the result`: `Complete?`
+- `No` returns to `Choose a tool`; `Yes` goes to `Final answer`
+- Right sentence: `Tools connect the agent to external systems.`
 
-# Slide 08 — Agent Workflow
+Expected Word section:
 
-[Embed original full-slide screenshot here]
+## Slide 08 — Agent Workflow
+
+[Embed the complete original slide screenshot]
 
 原 PPT · Slide 08
 
-### 页面衔接：Agent Definition → Agent Workflow
-We have seen what an agent is. Now let's look at how it gets work done.
+### 页面衔接：从 Agent 定义进入执行过程
+
+We have seen what an agent is. Now, let's follow how it completes a task.
 
 ### 左侧：Agent Workflow
-Start on the left at **Receive the task**. Follow the arrow to **Choose a tool**. Once the tool is selected, move to **Run the action**, then finish at **Check the result**. In a weather request, that last step is where the agent checks what the tool returned before answering.
 
-### 右侧：External Tools
-The sentence on the right explains why this works.
+Start at **Receive the task**. The agent first understands the user's goal.
+
+Follow the arrow to **Choose a tool**. The agent decides which outside capability it needs. It then moves to **Run the action** and waits for the real result.
+
+Next, the result enters **Check the result**. The decision point asks **Complete?** If the answer is **No**, follow the return arrow to **Choose a tool** and begin another round. If the answer is **Yes**, move to **Final answer**.
+
+The return arrow is important. It shows that the agent uses feedback instead of assuming that the first action was enough.
+
+### 右侧：External tools
+
+The sentence on the right explains why the action is possible:
 
 **Tools connect the agent to external systems.**
 
-Without a tool, the model may only have its learned knowledge. With a tool, it can retrieve information or carry out an operation.
+The model chooses the action, but the tool reaches the outside system and returns the result. That result supports the next decision in the loop.
 
-### 底部：Key Takeaway
-**Key Takeaway: An agent can take actions and learn from feedback.**
+### 页面总结与过渡
 
-That is the main difference from a simple question-and-answer exchange. Next, we will look at the loop in more detail.
+An agent receives a task, chooses and runs a tool, checks the result, and repeats when needed. Next, we will look more closely at how the agent decides which tool to use.
 
-Why this is right: original text is **included in its proper place and bold**, bridging/explanation is normal, each content area is fully explained before moving on, there is no copied source appendix.
+## Why this works
+
+- The screenshot appears before the narration.
+- Every source label is reproduced exactly and bold.
+- The flow is explained beside the left-side module, not in a separate generic image section.
+- The decision branch and return arrow are explained.
+- Short normal-weight sentences connect the source labels into spoken English.
+- The final visual point leads directly into the page summary.

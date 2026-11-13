@@ -1,41 +1,51 @@
-# Lecture Script — Final Acceptance Checklist
+# PPT to Word Lecture Script Acceptance Checklist
 
-## Deck integrity
-- [ ] Uses the latest finalized deck(s), not previous drafts.
-- [ ] Every required slide has exactly one original full-slide screenshot placed near the beginning of its section.
-- [ ] Slide numbers and titles follow PPT sequence; removed slides are only those explicitly excluded by user.
+## Source and slide integrity
 
-## Source-text fidelity
-- [ ] Each meaningful original sentence is included literally, not merely paraphrased or present inside screenshot.
-- [ ] All headings, subheadings, callouts, bullet text, row/column labels, diagram flow labels, captions, commands, filenames, numeric values and end-of-slide statements are accounted for.
-- [ ] Verbatim original PPT wording in script is **bold**; connector/explanation text is normal weight.
-- [ ] Table contents are integrated by logical row or group, preserving every substantive item.
-- [ ] Code/API details copied exactly, preferably in monospace blocks; distinguish code formatting from prose bolding.
-- [ ] Anything embedded in unreadable images is flagged and never guessed.
+- [ ] The latest finalized PPT is the content authority.
+- [ ] Required slides appear once, in the original order, with correct numbers and titles.
+- [ ] Each slide section begins with one complete and readable original slide screenshot.
+- [ ] Existing Word content outside the requested revision scope is preserved.
 
-## Visual narration
-- [ ] Each substantive visual has spoken English at the corresponding module or caption. Compare against the rendered slide, including labels and arrows embedded in images.
-- [ ] The script uses readable labels verbatim and in bold, with short English connectors in normal weight.
-- [ ] Flowcharts and sequences explain the path, meaningful branches, and any return or loop.
-- [ ] Architecture diagrams explain the main components and how they connect at the level needed for this slide.
-- [ ] Charts and screenshots direct attention to the evidence, control, or result that matters.
-- [ ] For image-only revisions, compare with the input Word document and confirm that other text, formatting, slide order, and screenshots are preserved.
+## Source coverage
+
+- [ ] Meaningful titles, sentences, bullets, table cells, labels, captions, values, and conclusions appear in the narration, not only in the screenshot.
+- [ ] Exact source wording is bold; new explanation and transitions are normal weight.
+- [ ] Commands, code, filenames, fields, parameters, numbers, and product names are exact.
+- [ ] Unreadable image text is reported rather than guessed.
+- [ ] Source items are placed in their real module instead of copied into a separate source dump.
+
+## Visual explanation
+
+- [ ] Decorative images are skipped; substantive visuals are explained.
+- [ ] Visual explanation is integrated beside the relevant module, not appended as a generic block.
+- [ ] The narration completes one visual region before moving to another.
+- [ ] Each region change has a natural spoken bridge, and the final visual point leads into the page summary.
+- [ ] Flowcharts cover entry, arrows, decisions, branches, returns, errors, loops, and stop conditions where shown.
+- [ ] Architectures explain components and the connections between them.
+- [ ] Timelines follow the displayed direction and explain change across milestones.
+- [ ] Comparisons and tables use consistent criteria by row or column.
+- [ ] Charts identify the evidence to notice without overstating it.
+- [ ] Interface screenshots follow the real user action order from control to result.
 
 ## Teaching quality
-- [ ] Each page begins with one useful English transition to the page's theme.
-- [ ] Chinese headings reflect *actual* screen regions / modules.
-- [ ] English narration flows conversationally; no mechanical `First ... Second ... Finally` repeated each slide.
-- [ ] Original material is dominant; linking lines facilitate reading rather than compete with it.
-- [ ] Explanations are brief, concrete and supported by the original PPT; examples are supplemental and clearly not original quotations.
-- [ ] No separate pasted source appendix or unstructured wall of bold text inside each slide entry.
-- [ ] Important technical terms have consistent spelling; commands/examples reproduce source exactly.
 
-## Word QA
-- [ ] Word document is editable and embeds all slide images.
-- [ ] Fonts and headings display correctly, screenshots are not cropped, and text does not overlap.
-- [ ] Long slides are allowed to continue naturally across Word pages; if split, the continuation remains clearly labeled.
-- [ ] PDF/PNG render has been inspected across the full document.
-- [ ] Omission scan reviewed manually; no substantive missing source text.
+- [ ] English uses common words, short sentences, and natural speaking rhythm.
+- [ ] Necessary technical terms are preserved and explained simply.
+- [ ] The script is source-led, not a transcript, generic summary, or independent essay.
+- [ ] Transitions connect the previous slide, current modules, image path, page summary, and next slide.
+- [ ] Repeated formulas such as “This slide shows” and mechanical `First / Second / Finally` patterns are avoided.
+- [ ] Added examples clarify the source and are not presented as original PPT text.
+
+## Word quality
+
+- [ ] The `.docx` is editable and all screenshots are embedded.
+- [ ] Screenshots are readable and not cropped.
+- [ ] Headings, bold runs, monospace code, paragraph spacing, and pagination are consistent.
+- [ ] Long slide sections continue naturally; no content is shrunk or clipped to fit one page.
+- [ ] The full document has been rendered and every page inspected for overlap, clipping, missing glyphs, orphan headings, and accidental gaps.
+- [ ] Slide count, sequence, embedded image count, and file integrity are verified.
 
 ## Acceptance definition
-The best result is neither a verbatim PPT transcript nor a generic teaching essay. It is a **source-led spoken explanation**: **all PPT wording reproduced faithfully and bold**, naturally read through in visual order with brief English explanation and transitions, backed by an embedded slide screenshot.
+
+The result is a Word teaching script that follows the PPT faithfully. The instructor can look at each original slide screenshot and read a simple, continuous English explanation in the same visual order. Original source wording remains exact and bold; added speech connects, explains, and transitions without competing with the source.
