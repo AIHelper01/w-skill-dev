@@ -13,6 +13,14 @@
 - [ ] Code/API details copied exactly, preferably in monospace blocks; distinguish code formatting from prose bolding.
 - [ ] Anything embedded in unreadable images is flagged and never guessed.
 
+## Visual narration
+- [ ] Each substantive visual has spoken English at the corresponding module or caption. Compare against the rendered slide, including labels and arrows embedded in images.
+- [ ] The script uses readable labels verbatim and in bold, with short English connectors in normal weight.
+- [ ] Flowcharts and sequences explain the path, meaningful branches, and any return or loop.
+- [ ] Architecture diagrams explain the main components and how they connect at the level needed for this slide.
+- [ ] Charts and screenshots direct attention to the evidence, control, or result that matters.
+- [ ] For image-only revisions, compare with the input Word document and confirm that other text, formatting, slide order, and screenshots are preserved.
+
 ## Teaching quality
 - [ ] Each page begins with one useful English transition to the page's theme.
 - [ ] Chinese headings reflect *actual* screen regions / modules.

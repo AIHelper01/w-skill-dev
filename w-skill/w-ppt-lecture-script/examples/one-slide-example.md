@@ -18,11 +18,7 @@ Expected Word structure:
 We have seen what an agent is. Now let's look at how it gets work done.
 
 ### 左侧：Agent Workflow
-The workflow on the left gives us four steps.
-
-**Receive the task → Choose a tool → Run the action → Check the result**
-
-For example, if the user asks for the weather, the agent selects a weather tool. It then checks the result before answering.
+Start on the left at **Receive the task**. Follow the arrow to **Choose a tool**. Once the tool is selected, move to **Run the action**, then finish at **Check the result**. In a weather request, that last step is where the agent checks what the tool returned before answering.
 
 ### 右侧：External Tools
 The sentence on the right explains why this works.

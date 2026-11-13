@@ -1,6 +1,6 @@
 ---
 name: w-ppt-lecture-script
-description: Create or revise a slide-by-slide English teaching script from PPT/PPTX materials, delivered as editable Word documents with a full screenshot of each original slide, complete source wording preserved in bold, Chinese module headings, natural English lecture transitions, and source-coverage/visual QA. Use when asked to 生成讲解稿、英文讲稿、逐页授课解说稿、PPT截图配套Word讲稿、保留原文加粗、原文串联为主, or to revise an existing lecture script to this style.
+description: Create or revise a slide-by-slide English teaching script from PPT/PPTX materials, delivered as editable Word documents with a full screenshot of each original slide, complete source wording preserved in bold, Chinese module headings, English narration for substantive figures, natural transitions, and source-coverage/visual QA. Use when asked to 生成讲解稿、英文讲稿、逐页授课解说稿、PPT截图配套Word讲稿、保留原文加粗、原文串联为主, or to revise an existing lecture script to this style.
 ---
 
 # PPT → Word English Lecture Script (原文为主，串联为辅)
@@ -9,8 +9,9 @@ description: Create or revise a slide-by-slide English teaching script from PPT/
 Generate **editable .docx teaching notes** for the exact provided presentation, not a PPT-text dump and not a loose summary. Each slide starts with a **full, unaltered screenshot of that slide**, followed by **Chinese organizational headings** and **spoken English narration**. Preserve **all source wording in the spoken/explained content** and make reproduced source text **bold**. Use brief natural transitions and explanations to connect that source text into a teachable sequence. The balance is **source content first, linking second**.
 
 ## Required inputs
-- User-supplied finalized PowerPoint file(s) (.pptx preferred) and, when available, an example lecture script .docx that establishes the user's format.
+- For a new script, user-supplied finalized PowerPoint file(s) (.pptx preferred) and, when available, an example lecture script .docx that establishes the user's format.
 - If an existing teaching-script Word file is supplied, use it as the layout and voice benchmark while treating the **latest PPT** as the authority for content.
+- For an image-only revision, use the existing Word file and the latest matching PPT when available. Readable embedded slide screenshots can serve as the visual source. Insert the missing narration at the relevant module or caption and revise only existing figure narration within scope. Preserve the rest of the wording, order, formatting, and screenshots.
 - Work with all slides in PPT order, including cover, section dividers, tables, figures, setup steps, and conclusions. If the PPT explicitly marks a slide for deletion, omit only as explicitly requested.
 
 ## Non-negotiable priorities
@@ -27,12 +28,16 @@ Generate **editable .docx teaching notes** for the exact provided presentation, 
 ### Step 1 — Inspect source and benchmark
 - Open the finalized deck; enumerate all slide numbers and titles.
 - Extract all text from *every* editable shape, text box, table cell, grouped shape, speaker note when explicitly requested, and relevant chart labels; do not assume `shape.text` alone captures tables/group shapes.
-- Review the screenshot of each slide for text inside raster images or diagrams, heading hierarchy, and intended narration order. When embedded text cannot be confidently read, flag it rather than guess or pretend it was reproduced.
+- Inspect every rendered slide visually, including raster images and grouped drawings. For each substantive visual, note its slide, position, type, readable labels, and where it belongs in the narration. Use the original PPT or a larger render to check fine text when available. Flag unreadable details. Skip decorative imagery.
 - If an example Word is supplied, inspect heading structure, screenshot placement, bolding, sentence rhythm, and slide transitions. Match the quality and style, not only its outline.
 
 ### Step 2 — Design a slide-by-slide script plan
 - Pick module headings based on what is visually *actually* on that page. Avoid boilerplate headings that do not match the slide.
-- Assign every source item to exactly one meaningful spot in the module order. Keep the slide title and subtitles visible and represented. Tables: first state the headings, then explain the rows in reasonable groups, using source wording for each item. Diagrams: talk through their direction/flow and include labels. Commands: present exact commands with a short explanation of what they do and when to run them.
+- Assign every source item to exactly one meaningful spot in the module order. Keep the slide title and subtitles visible and represented. Tables: first state the headings, then explain the rows in reasonable groups, using source wording for each item. Commands: present exact commands with a short explanation of what they do and when to run them.
+- Place each visual's explanation under its existing module or next to its caption in the slide's reading order. Use readable labels, step names, and callouts verbatim in **bold**. Connect them with short, normal-weight spoken English that guides the audience's eyes. If the existing script already covers the visual, add only the missing part.
+  - **Flowcharts and sequence diagrams:** start at the entry point and follow the arrows. Connect each meaningful step to the next and explain decision branches, returns, and loops where shown.
+  - **Architecture diagrams:** name the main layers or components, briefly state what they do, and explain how they connect. Cover internal detail when it is needed to understand the slide.
+  - **Charts, examples, and interface screenshots:** point to the relevant axis, series, comparison, highlighted control, or visible result. Reuse the figure's wording and explain what the audience should notice.
 - Produce **one or two** concise English linking lines before each chunk and explanatory lines only when needed. Source text is the center of attention; do not over-expand simple pages.
 
 ### Step 3 — Write the actual English lecture
@@ -62,7 +67,7 @@ If there are substantial original English items (including tables) that sound un
 
 ### Step 5 — Verify before delivery
 - Run `scripts/check_source_coverage.py --pptx INPUT.pptx --docx OUTPUT.docx --json REPORT.json` as a **heuristic** omission scan (not a proof of full fidelity; shape order and image text need manual review). Resolve or justify all substantive misses.
-- Visually compare every Word slide section with the corresponding slide image: **all text represented and bold**, visual sequencing correct, no duplicate-source dump, narrator's explanation subordinate to source.
+- Compare each Word section with the slide and the visual notes from Step 1. Confirm that every substantive visual has an English explanation in the right module, exact labels are bold, and the narration follows the visible path or layout. An embedded screenshot, caption, or text-coverage scan alone cannot confirm this. Use the [acceptance checklist](references/quality-checklist.md).
 - Render the final `.docx` to PNG/PDF using the document skill's `render_docx.py`. Review pages for image fit, line breaks, font substitution, orphaned headings, cut-off screenshots, empty gaps, and overflow. Fix and re-render.
 - Verify slide count/sequence, original coverage, original bold formatting, Word embedded screenshot count, and chapter transitions. If anything cannot be read or preserved, explicitly report the limitation.
 
