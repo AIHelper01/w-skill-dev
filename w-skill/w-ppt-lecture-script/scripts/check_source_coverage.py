@@ -45,29 +45,45 @@ def main():
         )
     ppt=Presentation(args.pptx)
     doc=Document(args.docx)
-    paras=[(norm(p.text), any(bool(r.bold) and r.text.strip() for r in p.runs)) for p in doc.paragraphs]
-    all_text=' '.join(x for x,_ in paras)
-    bold_text=' '.join(norm(r.text) for p in doc.paragraphs for r in p.runs if r.bold and r.text.strip())
+    # Only inspect the matching slide section, never unrelated slides.
+    sections = {}
+    current = None
+    duplicates = []
+    for para in doc.paragraphs:
+        m = re.match(r'^\s*Slide\s+(\d+)\s*[-—–:]', para.text, re.I)
+        if m:
+            current = int(m.group(1))
+            if current in sections:
+                duplicates.append(current)
+            sections.setdefault(current, [])
+        if current is not None:
+            sections[current].append(para)
     slides=[]
     for i,slide in enumerate(ppt.slides,1):
+        paras = sections.get(i, [])
+        all_text = norm(' '.join(p.text for p in paras))
+        # Insert boundaries at non-bold text to prevent artificial matches.
+        bold_text = norm(' '.join(''.join(r.text if r.bold else ' | ' for r in p.runs) for p in paras))
+        images = sum(len(p._p.xpath('.//a:blip')) for p in paras)
         items=[]
         for shape in slide.shapes:
             items.extend(source_fragments(shape, MSO_SHAPE_TYPE.GROUP))
         checks=[]
         for s in items:
             n=norm(s)
-            if not n:continue
-            # Exact fragment test; formatting splits or a long text box with line breaks may yield false negatives.
+            if not n: continue
             present=n in all_text
             in_bold=n in bold_text
-            checks.append({'source':s[:250], 'present_exact':present,'bold_exact':in_bold})
-        slides.append({'slide':i, 'source_items':len(checks),'missing_exact':[c for c in checks if not c['present_exact']], 'not_bold_exact':[c for c in checks if not c['bold_exact']]})
-    report={'pptx':Path(args.pptx).name, 'docx':Path(args.docx).name,'slides':slides,
-            'summary':{'slides':len(slides),'source_items':sum(x['source_items'] for x in slides),
+            checks.append({'source':s, 'present_exact':present,'bold_exact':in_bold})
+        slides.append({'slide':i, 'section_found':bool(paras), 'embedded_image_count':images,
+                       'source_items':len(checks),'missing_exact':[c for c in checks if not c['present_exact']],
+                       'not_bold_exact':[c for c in checks if not c['bold_exact']]})
+    report={'pptx':Path(args.pptx).name, 'docx':Path(args.docx).name,'slides':slides, 'duplicate_sections':duplicates, 'unexpected_sections':sorted(set(sections)-set(range(1,len(ppt.slides)+1))),
+            'summary':{'slides':len(slides), 'missing_sections':sum(not x['section_found'] for x in slides), 'sections_without_images':sum(x['embedded_image_count']==0 for x in slides),'source_items':sum(x['source_items'] for x in slides),
                        'missing_exact':sum(len(x['missing_exact']) for x in slides),
                        'not_bold_exact':sum(len(x['not_bold_exact']) for x in slides)}}
     print(json.dumps(report['summary'], indent=2))
-    print('NOTE: Heuristic exact match is conservative and may flag false negatives. Review per-slide output manually. It does not parse text in images.')
+    print('NOTE: Slide-local heuristic: inspect all misses and intentional exceptions manually (inactive repeated contents, code formatting, title runs, etc.). Does not prove semantic order, verify image identity, resolve inherited bold, or parse image text.')
     if args.json:Path(args.json).write_text(json.dumps(report,ensure_ascii=False,indent=2),encoding='utf-8')
 
 if __name__=='__main__':main()
