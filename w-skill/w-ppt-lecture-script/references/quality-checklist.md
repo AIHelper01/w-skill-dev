@@ -27,6 +27,12 @@
 - [ ] No separate pasted source appendix or unstructured wall of bold text inside each slide entry.
 - [ ] Important technical terms have consistent spelling; commands/examples reproduce source exactly.
 
+## Software demo QA
+- [ ] The classroom platform, mode, or workflow comes from the course material or user. Alternative paths and their exact commands remain covered.
+- [ ] Important actions have nearby cues to visible controls or state. Each source caption appears beside the relevant action, and module headings reflect the classroom task.
+- [ ] The script distinguishes visible state, expected outcomes, and live results. Claims about the active provider, endpoint, or model are supported by the available evidence.
+- [ ] A concept taught earlier is connected to the result where useful. Instructor recommendations have a supplied basis and use the correct source formatting.
+
 ## Word QA
 - [ ] Word document is editable and embeds all available source slide images. Verify every title, image, caption and narration starts under the same slide number. Check for copied draft blocks and repeated slide numbers after captions, including headings with different capitalization. Report unresolved source gaps.
 - [ ] Fonts and headings display correctly, screenshots are not cropped, and text does not overlap.
