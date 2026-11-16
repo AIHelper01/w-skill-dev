@@ -42,6 +42,14 @@ The **Representative Technologies** included **Decision Trees** and **Support Ve
 
 The **Representative Applications** included **Recommendation Systems** and **Spam Detection**. For example, a model could learn from existing emails and identify whether a new email was spam.
 
+## One technology per question
+
+For a timeline on Function Calling, MCP and Agent Skills, ask how the model requests an external action. Read the dated Function Calling entry and its original definition in bold. Then use one concrete example: the model selects a weather function and supplies Shanghai as an argument. The application runs the function and returns the result.
+
+Use the remaining problem to introduce the next entry: how can several applications connect to the same tools? Follow with the dated MCP entry and its definition. Then ask what tells an Agent how to complete a recurring task and introduce the Agent Skills entry. Keep the original comparison together and move on with a short cue such as “Let's start with Function Calling.”
+
+When a revised script is pasted after the wrong slide image, recover the new narration using its heading and put it directly after the matching slide caption. Remove any displaced duplicate heading or superseded narration after verifying the selected version.
+
 ## Capability hierarchy
 
 For the four-level AI use example, explain bottom to top: 6 billion → 2 billion → 20 million → 5,000. Pair numbers with their exact source labels. If they are illustrative, say “These numbers are just examples. What really matters is how people use AI at each level.” Never represent illustrations as measured statistics.
@@ -70,6 +78,24 @@ For a slide with concept text on the left and two related diagrams on the right,
 4. Summarize once and move to the next slide.
 
 Do not finish all left-side text and then add a generic `图片解读` section that repeats both diagrams. If revising an existing script, move the useful diagram sentences into the paired modules and delete the former tail block.
+
+## One figure with several matching explanations
+
+On an Agent architecture slide, pair the purple Planning node with the right-column planning definition, then use the Shanghai example to show task decomposition. For Memory, pair the blue node's short-term label with the short-term sentence, then pair the long-term label with the long-term sentence. For Tools, connect the green node to the tool-use text, then follow Execute, Observation, and Feedback as one loop. Keep one full screenshot and weave in short cues such as “Look under the blue Memory box.” Do not group the whole diagram and the entire right column as two consecutive modules.
+
+## One case across a technical diagram
+
+For an Agent memory lecture, start with the Shanghai trip. Its budget, weather and hotel choice are useful for the current plan. A preference for quiet hotels near public transport may be relevant again. Once the class can explain the difference, follow the diagram: the Agent selects the preference, writes it to long-term memory, searches for it when planning a later trip, and reads it into the new context. Point out the source labels at their respective steps. Keep the concrete facts paired with their memory roles.
+
+For a tool-call training example, trace instruction → input → output. The instruction describes the available tool and its arguments. The input is the weather request. The output shows the structured call. Point to the actual function name, location argument, and any boundary tokens in the sample, and explain what each marks. Close with a question the example leaves open: how can applications connect to different tools through a common interface?
+
+## One analogy for several concepts
+
+Use the same email scenario throughout an engineering comparison. Prompt Engineering is writing a clear email. Context Engineering is assembling the attachments and background the recipient needs. Harness Engineering is building the working environment with shared tools, processes, permissions, and feedback. Keep each part next to its original source definition. A subsequent coding example can make Loop Engineering concrete: run the program, inspect the result, fix the error, and retry until the tests pass or the configured limit is reached.
+
+## Course closing
+
+On a full-course closing slide, return to the opening question, then connect the chapter takeaways to the components that answer it. In a course on how a chatbot becomes an Agent, recall what planning, tools, memory, and the execution loop each add. Bring them back together in the original Agent model and end with one sentence the class can remember.
 
 ## Regression checks
 

@@ -2,7 +2,7 @@
 name: w-ppt-lecture-script
 description: Create or revise a slide-by-slide English teaching script from PPT/PPTX materials, delivered as editable Word documents with a full screenshot of each original slide, complete source wording preserved in bold, Chinese module headings, natural spoken English, semantic teaching order, selective technical explanations, and source-coverage/visual QA. Use when asked to 生成讲解稿、英文讲稿、逐页授课解说稿、PPT截图配套Word讲稿、保留原文加粗、原文串联为主, or to revise an existing lecture script to this style.
 metadata:
-  version: "3.1.0"
+  version: "3.4.0"
 ---
 
 # PPT → Word English Lecture Script (原文为主，串联为辅)
@@ -11,7 +11,7 @@ metadata:
 Generate **editable .docx teaching notes** for the exact provided presentation, not a PPT-text dump and not a loose summary. Each slide starts with a **full, unaltered screenshot of that slide**, followed by **Chinese organizational headings** and **spoken English narration**. Preserve **all meaningful source wording in the spoken/explained content, with the explicit repeated-contents exception below** and make reproduced source text **bold**. Use brief natural transitions and explanations to connect that source text into a teachable sequence. The balance is **source content first, linking second**.
 
 ## Required inputs
-- User-supplied finalized PowerPoint file(s) (.pptx preferred) and, when available, an example lecture script .docx that establishes the user's format.
+- Use the finalized PowerPoint when supplied. For a revision with only a Word script, use its embedded full-slide images and existing source-marked runs. Retain verifiable material, and report any gaps in slide sequence or source images that the supplied files cannot resolve.
 - If an existing teaching-script Word file is supplied, use it as the layout and voice benchmark while treating the **latest PPT** as the authority for content.
 - Work with all slides in PPT order, including cover, section dividers, tables, figures, setup steps, and conclusions. If the PPT explicitly marks a slide for deletion, omit only as explicitly requested.
 
@@ -24,7 +24,7 @@ Generate **editable .docx teaching notes** for the exact provided presentation, 
 6. **Exact tech material**: preserve code blocks, commands, API fields, numbers, quoted phrases and product names literally (code in monospace, with surrounding original explanation bold). Never invent unavailable features. Distinguish PPT's claims from verified current facts; unless the user asks for research, do not silently rewrite the source.
 7. **Delivery**: one editable Word document per source deck by default, in original order. Place images *inside the Word document* (no missing external image dependency). Use consistent styles, readable typography, and logical paragraph breaks. It is fine and expected that some slides need multiple Word pages; do not force one-slide-per-Word-page if it makes text too small or clips content.
 
-## Teaching design rules (V3.0)
+## Teaching design rules
 
 ### Contents pages
 - First contents page: introduce the course, then read each original chapter title in bold in order. Add one or two simple English sentences explaining what learners will study. For key chapters, add why the topic matters. For comparison chapters, explicitly say what approaches will be compared. For product chapters, name representative products when supplied by the user or supported by the deck; explain practical value without unsupported popularity claims.
@@ -43,7 +43,8 @@ Before drafting a slide that contains both explanatory text and substantive visu
 
 Use the map to write in the pattern `source idea → related visual path → short takeaway → next module`.
 
-- Finish one text–visual pair before starting the next. Do not explain all text first and collect all image explanations at the end.
+- Pair at the level of the concept, not the whole image. In the map, name the exact node, arrow, row, control, or subregion that belongs with each text passage. The same figure can appear in several map rows; a single concept can connect material across columns or between a diagram and a table.
+- Finish a concept across its relevant regions before moving on. When two regions explain the same concept, name or point to the relevant location as part of the spoken explanation and bring in the matching source wording there. Do not read the whole diagram first and repeat its topics from the text column later. For a connected flow, briefly orient the audience if needed and bring the arrows and feedback together where their relationship matters.
 - Keep the complete slide screenshot once at the beginning. Pairing controls the spoken order; it does not require cropping or repeating the screenshot.
 - Use a dedicated diagram heading only when the visual is an independent knowledge module. Never add a catch-all `图片解读` section merely because a slide contains images.
 - In revisions, move useful visual explanation into its related module, remove the old generic tail block, and delete any duplicated wording.
@@ -62,6 +63,18 @@ Use the map to write in the pattern `source idea → related visual path → sho
 | Case study | Context → problem → action/permission → result → lesson, following the source. |
 
 Complete a module before introducing the next. Do not mechanically generate “top/left/middle/right/bottom” sections when they break semantic units. Use meaningful Chinese headings such as `第二阶段：2022 — Algorithm-led`.
+
+### Question-led narration
+- Introduce a technical module with the question the next source passage answers, a concrete task, or a dependency from the previous module. Use a question only where it helps. Give the class a reason to examine the date, definition, step, or tool before reading it.
+- Keep each idea in a speakable unit. Place an optional concrete example immediately after the module's bold source wording. Use examples to clarify a specific action or responsibility, such as the model selecting a weather tool and the application executing the call.
+- Connect adjacent modules through the problem that remains. On a timeline, keep each date, technology, definition, and problem solved together. Explain their combined role once. Prefer a single specific next-slide cue when the source already summarizes the page.
+- Keep citation and attribution lines under a short Chinese presenter label when present. Preserve their text and formatting and keep them outside the spoken transition.
+
+### Teaching difficult concepts
+- For core concepts, start from a familiar action, a concrete task, or a missing input. Introduce the term after the audience can see why it matters. When the same case remains useful across slides, carry its inputs, outcomes, or preferences forward so learners can focus on what changes.
+- For a dense diagram or code example, narrate the actual sequence. Start from a concrete input, point to the relevant labels as they appear, and say who acts, what data moves or changes, and what the next step uses. Explain where a loop stops or what an approval branch changes when the source or approved example supports it.
+- For related concepts that are easy to confuse, reuse one analogy or scenario and explain what changes at each stage. Bridge slides with the question the previous mechanism leaves open, and answer it early on the next slide.
+- Give foundational diagrams and comparisons enough room for a worked explanation. Use short speakable paragraphs and meaningful subheadings. Keep simple dividers brief. When the closing slide ends the full course, use the opening question or model to synthesize the chapters when that would help learners recall how the pieces fit.
 
 ### Spoken English and selective enrichment
 - Use short, natural sentences suitable for an international technical classroom. Prefer use, help, show, improve, complete, find, choose. Avoid unnecessarily formal vocabulary; retain precise technical terminology. Example: “The Agent identified the problem, asked for permission, and took action.” Use “looked into” instead if the intended meaning is investigation rather than finding the cause.
@@ -104,7 +117,7 @@ Short and natural spoken transition in English.
 Natural spoken lead-in (regular). Then **exact original PPT sentences/fragments in bold**, followed by a short plain-English elaboration where useful. Continue in the planned semantic teaching order. A presenter must be able to read the text as speech, without reading metadata or explanatory drafting notes.
 
 `页面总结与过渡`
-Two or three clear sentences that capture the key message and lead naturally to the next slide; avoid needlessly repeating all source lines.
+Add a short transition when useful. If the slide already states the takeaway, a single next-slide cue is enough. Omit the block where it adds no teaching value.
 
 If there are substantial original English items (including tables) that sound unnatural as direct speech, connect them with short prompts (“Let's look at the three modes.”) and retain each original label/phrase in **bold**, making them easy to read in sequence. Do **not** append a separate full-page bold source dump to satisfy coverage.
 
@@ -113,7 +126,9 @@ Interleave related text and visuals while writing. After explaining a source con
 ### Step 4 — Build Word with screenshots
 - Render the supplied PPT to images at a readable size, using the *exact latest upload*.
 - Create .docx using Word paragraphs and runs; original source runs bold, added bridging text normal; Chinese module labels as headings. Put one slide image at the start of each slide section.
-- Respect natural slide-length variation. Intro and chapter-divider slides may be short; multi-module technical slides require more substantial narration.
+- Respect natural slide-length variation. Let short dividers and nearby entries flow across Word pages when the next entry's opening fits. Keep the slide heading, full screenshot, caption and start of its own narration together. Keep each module heading with the next paragraph and allow dense narration to continue naturally. Avoid long chains of keep-with-next settings across body paragraphs. Retain deliberate page breaks when a figure, code example, or chapter opening needs one.
+- Keep one numbered slide title above the screenshot. During a revision, check for a second title with the same slide number after the caption, including capitalization variants. Remove the duplicate heading while keeping the approved narration attached to its slide.
+- When replacing a draft block with approved narration, match slide numbers before moving any paragraphs. Attach the selected narration directly to its own screenshot and caption, then remove duplicate headings and superseded draft text. Supplemental figures and code images stay with their modules.
 
 ### Step 5 — Verify before delivery
 - Run `scripts/check_source_coverage.py --pptx INPUT.pptx --docx OUTPUT.docx --json REPORT.json` as a **heuristic** omission scan (not a proof of full fidelity; shape order and image text need manual review). Resolve or justify all substantive misses.
