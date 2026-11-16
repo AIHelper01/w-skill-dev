@@ -2,7 +2,7 @@
 name: w-ppt-lecture-script
 description: Create or revise a slide-by-slide English teaching script from PPT/PPTX materials, delivered as editable Word documents with a full screenshot of each original slide, complete source wording preserved in bold, Chinese module headings, natural spoken English, semantic teaching order, selective technical explanations, and source-coverage/visual QA. Use when asked to 生成讲解稿、英文讲稿、逐页授课解说稿、PPT截图配套Word讲稿、保留原文加粗、原文串联为主, or to revise an existing lecture script to this style.
 metadata:
-  version: "3.4.0"
+  version: "3.5.0"
 ---
 
 # PPT → Word English Lecture Script (原文为主，串联为辅)
@@ -76,6 +76,13 @@ Complete a module before introducing the next. Do not mechanically generate “t
 - For related concepts that are easy to confuse, reuse one analogy or scenario and explain what changes at each stage. Bridge slides with the question the previous mechanism leaves open, and answer it early on the next slide.
 - Give foundational diagrams and comparisons enough room for a worked explanation. Use short speakable paragraphs and meaningful subheadings. Keep simple dividers brief. When the closing slide ends the full course, use the opening question or model to synthesize the chapters when that would help learners recall how the pieces fit.
 
+### Software demos and interface walkthroughs
+- Give learners a task or result to follow. If the user or course material identifies the classroom platform, mode, or workflow, make it the main demonstration path. Cover alternative source paths and commands briefly, preserving their exact wording and formatting.
+- For each important action, point learners to the relevant visible control or state. Place each exact source instruction and caption beside the action it supports. Use short spoken paragraphs and explain what the action does or what to check when it helps learners follow the demo.
+- Distinguish what the screenshot shows, what the learner should expect, and what an actual run has confirmed. Name the evidence for any claim about the active provider, endpoint, model, or outcome. A test reply alone establishes that a request received a response.
+- When the demo illustrates a concept already taught, connect the result to that concept in one short passage. Identify the roles of the components involved and use a specific next task or question when the next slide addresses it.
+- Use course-specific recommendations only when supported by the user or the material. Attribute first-person preferences only when supplied by the instructor. Keep added recommendations and explanations in regular weight.
+
 ### Spoken English and selective enrichment
 - Use short, natural sentences suitable for an international technical classroom. Prefer use, help, show, improve, complete, find, choose. Avoid unnecessarily formal vocabulary; retain precise technical terminology. Example: “The Agent identified the problem, asked for permission, and took action.” Use “looked into” instead if the intended meaning is investigation rather than finding the cause.
 - On the first meaningful occurrence of a technical abbreviation, give its expansion or short form when it helps learners: “ReAct stands for Reasoning and Acting.” “Support Vector Machines, or SVM for short, were widely used at that time.” Do not invent expansions or repeat them every slide. Preserve user-approved wording and add accurate context only.
@@ -113,7 +120,7 @@ For each slide write:
 `页面衔接：[previous topic] → [current topic]`
 Short and natural spoken transition in English.
 
-`左侧/右侧/顶部/底部：[PPT's actual module]`
+`[Chinese heading naming the actual teaching module]`
 Natural spoken lead-in (regular). Then **exact original PPT sentences/fragments in bold**, followed by a short plain-English elaboration where useful. Continue in the planned semantic teaching order. A presenter must be able to read the text as speech, without reading metadata or explanatory drafting notes.
 
 `页面总结与过渡`
