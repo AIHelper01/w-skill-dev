@@ -97,6 +97,46 @@ Use the same email scenario throughout an engineering comparison. Prompt Enginee
 
 On a full-course closing slide, return to the opening question, then connect the chapter takeaways to the components that answer it. In a course on how a chatbot becomes an Agent, recall what planning, tools, memory, and the execution loop each add. Bring them back together in the original Agent model and end with one sentence the class can remember.
 
+## Software demos: installation, interface, and provider setup
+
+These partial before/after examples use Slides 19–21 of a CC Switch lesson. The classroom path uses Windows and Direct Mode in this example. Bold marks wording visible on the source slide. Each complete script still requires all slide-local source text, commands, captions, and the full screenshot.
+
+### Slide 19 — Give learners a route through platform options
+
+Before: Read the download sources, platform commands, and file extensions with equal emphasis.
+
+After:
+
+We'll use Windows in this exercise. On the download page, choose the Windows installer. **Download the .msi file and double-click to install.**
+
+Once it's installed, we'll open CC Switch and find where it lists the providers for Codex.
+
+Pass when the classroom route is clear and the complete script also covers the other platforms, installer types, and exact commands. Without a confirmed classroom platform, present the choices without assigning one to the class.
+
+### Slide 20 — Use the interface to prepare the next action
+
+Before: Ask learners to read the toolbar labels from left to right, then mention the active provider at the end.
+
+After:
+
+Find the **OpenAI Official** card. The blue **In use** badge marks the active provider in this screenshot. Now look at the upper-right corner for **⑥ Add Provider**. We'll use that button in the next exercise.
+
+Pass when learners can point to the state indicator and the next control. Cover the remaining labels in the complete script and give important operations their own speakable units.
+
+### Slide 21 — Pair the screenshot with the action and explain the result
+
+Before: Describe the upper screenshot during the steps and repeat its caption in a separate section. Treat a normal test reply as confirmation of the model identity.
+
+After:
+
+In the upper screenshot, **Step 1–2: Select Codex and Add a Provider**. Follow the red arrow to the orange button. **Click + Add Provider. (fig. ①).**
+
+Later, after the exact enable, restart, and test step, explain the expected result:
+
+Once DeepSeek is active in Direct Mode, Codex sends the request directly to DeepSeek. We're still using the Codex interface and its Harness. DeepSeek is the underlying model in this configuration. How would we do this with a model on our own server? We'll use vLLM in the next exercise.
+
+Pass when both original captions appear beside their associated steps in the complete script and the source prerequisite, five instructions, and configuration-file entries are covered. Keep routing conditional without evidence that the provider and mode are active. A reply is evidence of a response. Use provider state or available request evidence to support a stronger claim.
+
 ## Regression checks
 
 - For the 2020/2022/2025 example, reject a script that introduces the 2022 ChatGPT paragraph under 2020.
